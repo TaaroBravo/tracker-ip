@@ -27,14 +27,15 @@ public class FixerCurrencyService implements CurrencyService {
 
     @Override
     public Currency get(Symbol currencySymbol) throws UnirestException, JsonProcessingException {
-        if(currencyRepository.hasWith(currencySymbol))
-            return currencyRepository.get(currencySymbol);
+        if(currencyRepository.findById(currencySymbol).isPresent())
+            return currencyRepository.findById(currencySymbol)
+                    .orElseThrow(() -> new RuntimeException("Did not find the currency by symbol"));
         else{
             HttpResponse<JsonNode> response = Unirest.get(basePath).asJson();
             FixerResponse fixerResponse = FixerResponse.from(response.getBody().toString());
 
             Currency currency = fixerResponse.toCurrency(currencySymbol);
-            currencyRepository.set(currency);
+            currencyRepository.save(currency);
             return currency;
         }
     }

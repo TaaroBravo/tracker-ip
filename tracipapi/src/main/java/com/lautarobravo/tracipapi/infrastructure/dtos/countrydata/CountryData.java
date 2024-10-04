@@ -1,11 +1,17 @@
 package com.lautarobravo.tracipapi.infrastructure.dtos.countrydata;
 
 import com.lautarobravo.tracipapi.domain.model.Symbol;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CountryData {
-
+@Entity
+@NoArgsConstructor
+public class CountryData implements Serializable {
+    @Id
     public String isoCode;
     public List<Symbol> currencies;
     public List<String> timezones;

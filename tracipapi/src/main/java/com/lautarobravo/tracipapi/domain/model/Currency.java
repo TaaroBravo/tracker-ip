@@ -1,6 +1,18 @@
 package com.lautarobravo.tracipapi.domain.model;
 
-public class Currency {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Entity
+@NoArgsConstructor
+public class Currency implements Serializable {
+
+    @Id
     private Symbol symbol;
     private double valueInUsd;
 

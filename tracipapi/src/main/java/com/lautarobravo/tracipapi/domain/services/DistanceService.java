@@ -5,8 +5,7 @@ import com.lautarobravo.tracipapi.domain.repositories.DistancesRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class DistanceService {
@@ -18,19 +17,19 @@ public class DistanceService {
     }
 
     public Distance getMaxDistance() {
-        List<Distance> distances = distancesRepository.findAll();
+        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
         distances.sort(sortByGreatest());
         return distances.get(0);
     }
 
     public Distance getMinDistance() {
-        List<Distance> distances = distancesRepository.findAll();
+        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
         distances.sort(sortByGreatest());
         return distances.get(distances.size() - 1);
     }
 
     public Distance getAverageDistance() {
-        List<Distance> distances = distancesRepository.findAll();
+        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
         double allDistancesSum = 0;
         for (Distance distance : distances)
         {
@@ -55,5 +54,7 @@ public class DistanceService {
             }
         };
     }
+
+
 
 }

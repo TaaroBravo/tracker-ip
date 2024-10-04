@@ -1,10 +1,19 @@
 package com.lautarobravo.tracipapi.domain.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.Objects;
 
-public class Distance{
-
+@Entity
+@NoArgsConstructor
+public class Distance implements Serializable {
+    @Id
     private String country;
     private double value;
 

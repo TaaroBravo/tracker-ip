@@ -1,10 +1,7 @@
 package com.lautarobravo.tracipapi.domain.repositories;
 
 import com.lautarobravo.tracipapi.domain.model.Distance;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface DistancesRepository {
-    List<Distance> findAll();
-    void save(Distance distance);
+public interface DistancesRepository extends CrudRepository<Distance, String> {
 }

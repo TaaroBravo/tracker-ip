@@ -23,13 +23,14 @@ public class IAPIGeoLocalizationService implements GeoLocalizationService {
     }
 
     public GeoLocalizationData get(String ip) throws JsonProcessingException, UnirestException {
-        if(geoLocalizationRepository.hasWith(ip))
-            return geoLocalizationRepository.get(ip);
+        if(geoLocalizationRepository.findById(ip).isPresent())
+            return geoLocalizationRepository.findById(ip)
+                    .orElseThrow(() -> new RuntimeException("Did not find a geolocalizationdata with " + ip));
         else {
             HttpResponse<JsonNode> response = Unirest.get("http://api.ipapi.com/"+ip+"?access_key="+"9ac624c725ca0dc82c99814b9251f1d2").asJson();
             IAPIResponse iapiResponse = IAPIResponse.from(response.getBody().toString());
             GeoLocalizationData geoLocalization = iapiResponse.toGeoLocalization();
-            geoLocalizationRepository.set(geoLocalization);
+            geoLocalizationRepository.save(geoLocalization);
             return geoLocalization;
         }
 

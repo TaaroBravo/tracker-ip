@@ -1,6 +1,11 @@
 package com.lautarobravo.tracipapi.domain.model;
 
-public class Language {
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@NoArgsConstructor
+public class Language implements Serializable {
     private String code;
     private String name;
 

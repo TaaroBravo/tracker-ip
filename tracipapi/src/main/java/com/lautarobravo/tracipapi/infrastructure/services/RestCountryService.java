@@ -30,7 +30,7 @@ public class RestCountryService implements CountryService {
     @Override
     public CountryData get(String codeSymbol) throws UnirestException, JsonProcessingException {
 
-        if(!countryDataRepository.hasWith(codeSymbol)){
+        if(countryDataRepository.findById(codeSymbol).isEmpty()){
             HttpResponse<JsonNode> response = Unirest.get(path).asJson();
             ObjectMapper om = new ObjectMapper();
             CountryLayerResponse[] countriesLayerResponses = om.readValue(response.getBody().toString(), CountryLayerResponse[].class);
@@ -39,9 +39,10 @@ public class RestCountryService implements CountryService {
                     .map(CountryLayerResponse::toCountryData)
                     .toList();
 
-            countryDataRepository.set(countriesDatas);
+            countryDataRepository.saveAll(countriesDatas);
         }
 
-        return countryDataRepository.get(codeSymbol);
+        return countryDataRepository.findById(codeSymbol)
+                .orElseThrow(() -> new RuntimeException("Did not find country data with " + codeSymbol));
     }
 }

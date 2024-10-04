@@ -1,8 +1,12 @@
 package com.lautarobravo.tracipapi.domain.model;
 
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Symbol {
+@NoArgsConstructor
+public class Symbol implements Serializable {
     private String code;
     private String name;
     private String symbol;

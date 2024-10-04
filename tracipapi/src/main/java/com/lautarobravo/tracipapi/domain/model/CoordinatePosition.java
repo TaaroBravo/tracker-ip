@@ -1,8 +1,12 @@
 package com.lautarobravo.tracipapi.domain.model;
 
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.text.NumberFormat;
 
-public class CoordinatePosition {
+@NoArgsConstructor
+public class CoordinatePosition implements Serializable {
     private double latitude;
     private double longitude;
 

@@ -2,15 +2,22 @@ package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
 
 import com.lautarobravo.tracipapi.domain.model.CoordinatePosition;
 import com.lautarobravo.tracipapi.domain.model.Language;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GeoLocalizationData {
-    private final String ip;
-    private final String countryName;
-    private final String countryCode;
-    private final List<Language> languages;
-    private final CoordinatePosition position;
+@Entity
+@NoArgsConstructor
+public class GeoLocalizationData implements Serializable {
+    @Id
+    private String ip;
+    private String countryName;
+    private String countryCode;
+    private List<Language> languages;
+    private CoordinatePosition position;
 
     public GeoLocalizationData(String ip, String countryName, String countryCode, List<Language> languages, CoordinatePosition position) {
         this.ip = ip;
