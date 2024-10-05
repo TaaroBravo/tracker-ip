@@ -1,4 +1,4 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
+package com.lautarobravo.tracipapi.infrastructure.responses.geolocalization;
 
 import java.util.List;
 

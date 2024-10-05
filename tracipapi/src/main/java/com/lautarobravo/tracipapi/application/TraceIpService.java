@@ -3,9 +3,9 @@ package com.lautarobravo.tracipapi.application;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lautarobravo.tracipapi.domain.model.*;
 import com.lautarobravo.tracipapi.domain.services.CountryService;
-import com.lautarobravo.tracipapi.domain.services.DistanceService;
-import com.lautarobravo.tracipapi.infrastructure.dtos.countrydata.CountryData;
-import com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization.GeoLocalizationData;
+import com.lautarobravo.tracipapi.infrastructure.services.DistanceService;
+import com.lautarobravo.tracipapi.domain.model.CountryDetails;
+import com.lautarobravo.tracipapi.domain.model.GeoLocalization;
 import com.lautarobravo.tracipapi.domain.services.CurrencyService;
 import com.lautarobravo.tracipapi.domain.services.GeoLocalizationService;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -40,8 +40,8 @@ public class TraceIpService {
 
     public String getBy(String ip) throws UnirestException, JsonProcessingException {
 
-        GeoLocalizationData geoLocalization = geoLocalizationService.get(ip);
-        CountryData countrySpecifics = countryService.get(geoLocalization.getCountryCode());
+        GeoLocalization geoLocalization = geoLocalizationService.get(ip);
+        CountryDetails countrySpecifics = countryService.get(geoLocalization.getCountryCode());
 
         List<Currency> currencies = getCurrencies(countrySpecifics);
 
@@ -50,14 +50,14 @@ public class TraceIpService {
                 .map(Hour::from)
                 .toList();
 
-        GeoLocalizationData bsAs = geoLocalizationService.get("181.31.0.46");
+        GeoLocalization bsAs = geoLocalizationService.get("181.31.0.46");
 
         Distance distanceToBsAs = Distance.from(geoLocalization.getCountryName(), geoLocalization.getPosition(), bsAs.getPosition());
 
         distanceService.save(distanceToBsAs);
 
-        return IPResult.from(ip,
-                Country.from(geoLocalization.getCountryName(), geoLocalization.getCountryCode(), countrySpecifics.isoCode),
+        return IPDetails.from(ip,
+                CountryName.from(geoLocalization.getCountryName(), geoLocalization.getCountryCode(), countrySpecifics.isoCode),
                 geoLocalization.getLanguages(),
                 geoLocalization.getPosition(),
                 currencies,
@@ -70,7 +70,7 @@ public class TraceIpService {
                 .toString();
     }
 
-    private @NotNull List<Currency> getCurrencies(CountryData countrySpecifics) throws UnirestException, JsonProcessingException {
+    private @NotNull List<Currency> getCurrencies(CountryDetails countrySpecifics) throws UnirestException, JsonProcessingException {
 
         List<Currency> currencies = new ArrayList<>();
         for(Symbol symbol : countrySpecifics.currencies)

@@ -1,4 +1,4 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.currency;
+package com.lautarobravo.tracipapi.infrastructure.responses.currency;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;

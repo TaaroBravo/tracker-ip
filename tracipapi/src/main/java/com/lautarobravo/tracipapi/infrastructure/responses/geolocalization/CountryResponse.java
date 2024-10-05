@@ -1,4 +1,4 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
+package com.lautarobravo.tracipapi.infrastructure.responses.geolocalization;
 
 public class CountryResponse{
     public String name;

@@ -33,4 +33,12 @@ public class Symbol implements Serializable {
     public String getCode() {
         return code;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }

@@ -1,18 +1,18 @@
 package com.lautarobravo.tracipapi.domain.model;
 
-public class Country{
+public class CountryName {
     private String name;
     private String code;
     private String isoCode;
 
-    public Country(String name, String code, String isoCode) {
+    public CountryName(String name, String code, String isoCode) {
         this.name = name;
         this.code = code;
         this.isoCode = isoCode;
     }
 
-    public static Country from(String name, String code, String isoCode) {
-        return new Country(name, code, isoCode);
+    public static CountryName from(String name, String code, String isoCode) {
+        return new CountryName(name, code, isoCode);
     }
 
     @Override

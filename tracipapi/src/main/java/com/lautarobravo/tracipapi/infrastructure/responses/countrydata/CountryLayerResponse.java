@@ -1,10 +1,10 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.countrydata;
+package com.lautarobravo.tracipapi.infrastructure.responses.countrydata;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lautarobravo.tracipapi.domain.model.CountryDetails;
 import com.lautarobravo.tracipapi.domain.model.Symbol;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ public class CountryLayerResponse {
         return new CountryLayerResponse();
     }
 
-    public CountryData toCountryData() {
-        return CountryData.from(alpha2Code,
+    public CountryDetails toCountryData() {
+        return CountryDetails.from(alpha2Code,
                 mapCurrencies(),
                 timezones.stream().toList());
     }

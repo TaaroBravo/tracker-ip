@@ -1,8 +1,6 @@
 package com.lautarobravo.tracipapi.domain.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
 
@@ -44,6 +42,18 @@ public class Currency implements Serializable {
 
     public boolean areTheSame(Currency currency) {
         return currency.getSymbolCode().equals(getSymbolCode());
+    }
+
+    public String getSymbolName() {
+        return symbol.getName();
+    }
+
+    public String getCurrencySymbol() {
+        return symbol.getSymbol();
+    }
+
+    public double getValue() {
+        return valueInUsd;
     }
 }
 

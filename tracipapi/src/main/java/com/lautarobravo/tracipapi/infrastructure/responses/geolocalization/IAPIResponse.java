@@ -1,8 +1,9 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
+package com.lautarobravo.tracipapi.infrastructure.responses.geolocalization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lautarobravo.tracipapi.domain.model.CoordinatePosition;
+import com.lautarobravo.tracipapi.domain.model.GeoLocalization;
 import com.lautarobravo.tracipapi.domain.model.Language;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class IAPIResponse {
     public Object dma;
     public String region_name;
     public Object msa;
-    public IAPILocation location;
+    public IAPILocationResponse location;
     public String radius;
     public String region_code;
     public double longitude;
@@ -33,14 +34,14 @@ public class IAPIResponse {
         return om.readValue(json, IAPIResponse.class);
     }
 
-    public GeoLocalizationData toGeoLocalization() {
-        return GeoLocalizationData.from(ip, country_name, country_code, getLanguagesFrom(location.languages), CoordinatePosition.from(latitude, longitude));
+    public GeoLocalization toGeoLocalization() {
+        return GeoLocalization.from(ip, country_name, country_code, getLanguagesFrom(location.languages), CoordinatePosition.from(latitude, longitude));
     }
 
-    private List<Language> getLanguagesFrom(ArrayList<IAPILanguage> languages){
+    private List<Language> getLanguagesFrom(ArrayList<IAPILanguageResponse> languages){
         return languages
                 .stream()
-                .map(IAPILanguage::toResponse)
+                .map(IAPILanguageResponse::toResponse)
                 .toList();
     }
 }

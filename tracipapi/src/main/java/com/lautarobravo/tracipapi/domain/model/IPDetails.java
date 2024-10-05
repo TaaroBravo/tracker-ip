@@ -3,10 +3,10 @@ package com.lautarobravo.tracipapi.domain.model;
 import java.util.Date;
 import java.util.List;
 
-public class IPResult {
+public class IPDetails {
 
     private String ip;
-    private Country country;
+    private CountryName country;
     private List<Language> languages;
     private CoordinatePosition position;
     private List<Currency> currencies;
@@ -17,17 +17,17 @@ public class IPResult {
     private Distance lowerDistanceToBsAs;
     private Distance averageDistanceToBsAs;
 
-    public IPResult(String ip,
-                    Country country,
-                    List<Language> languages,
-                    CoordinatePosition position,
-                    List<Currency> currency,
-                    Date date,
-                    List<Hour> hour,
-                    Distance distance,
-                    Distance longestDistanceToBsAs,
-                    Distance lowerDistanceToBsAs,
-                    Distance averageDistanceToBsAs) {
+    public IPDetails(String ip,
+                     CountryName country,
+                     List<Language> languages,
+                     CoordinatePosition position,
+                     List<Currency> currency,
+                     Date date,
+                     List<Hour> hour,
+                     Distance distance,
+                     Distance longestDistanceToBsAs,
+                     Distance lowerDistanceToBsAs,
+                     Distance averageDistanceToBsAs) {
         this.ip = ip;
         this.country = country;
         this.languages = languages;
@@ -41,18 +41,18 @@ public class IPResult {
         this.averageDistanceToBsAs = averageDistanceToBsAs;
     }
 
-    public static IPResult from(String ip,
-                                Country country,
-                                List<Language> languages,
-                                CoordinatePosition position,
-                                List<Currency> currency,
-                                Date date,
-                                List<Hour> hour,
-                                Distance distance,
-                                Distance longestDistanceToBsAs,
-                                Distance lowerDistanceToBsAs,
-                                Distance averageDistanceToBsAs) {
-        return new IPResult(ip,
+    public static IPDetails from(String ip,
+                                 CountryName country,
+                                 List<Language> languages,
+                                 CoordinatePosition position,
+                                 List<Currency> currency,
+                                 Date date,
+                                 List<Hour> hour,
+                                 Distance distance,
+                                 Distance longestDistanceToBsAs,
+                                 Distance lowerDistanceToBsAs,
+                                 Distance averageDistanceToBsAs) {
+        return new IPDetails(ip,
                 country,
                 languages,
                 position,

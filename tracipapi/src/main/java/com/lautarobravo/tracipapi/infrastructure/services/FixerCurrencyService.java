@@ -5,7 +5,8 @@ import com.lautarobravo.tracipapi.domain.model.Currency;
 import com.lautarobravo.tracipapi.domain.model.Symbol;
 import com.lautarobravo.tracipapi.domain.repositories.CurrencyRepository;
 import com.lautarobravo.tracipapi.domain.services.CurrencyService;
-import com.lautarobravo.tracipapi.infrastructure.dtos.currency.FixerResponse;
+import com.lautarobravo.tracipapi.infrastructure.dtos.CurrencyDTO;
+import com.lautarobravo.tracipapi.infrastructure.responses.currency.FixerResponse;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -27,15 +28,16 @@ public class FixerCurrencyService implements CurrencyService {
 
     @Override
     public Currency get(Symbol currencySymbol) throws UnirestException, JsonProcessingException {
-        if(currencyRepository.findById(currencySymbol).isPresent())
-            return currencyRepository.findById(currencySymbol)
+        if(currencyRepository.findById(currencySymbol.getCode()).isPresent())
+            return currencyRepository.findById(currencySymbol.getCode())
+                    .map(CurrencyDTO::toModel)
                     .orElseThrow(() -> new RuntimeException("Did not find the currency by symbol"));
         else{
             HttpResponse<JsonNode> response = Unirest.get(basePath).asJson();
             FixerResponse fixerResponse = FixerResponse.from(response.getBody().toString());
 
             Currency currency = fixerResponse.toCurrency(currencySymbol);
-            currencyRepository.save(currency);
+            currencyRepository.save(CurrencyDTO.from(currency));
             return currency;
         }
     }

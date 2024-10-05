@@ -1,7 +1,9 @@
-package com.lautarobravo.tracipapi.domain.services;
+package com.lautarobravo.tracipapi.infrastructure.services;
 
 import com.lautarobravo.tracipapi.domain.model.Distance;
 import com.lautarobravo.tracipapi.domain.repositories.DistancesRepository;
+import com.lautarobravo.tracipapi.domain.services.IterableExtensions;
+import com.lautarobravo.tracipapi.infrastructure.dtos.DistanceDTO;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +19,19 @@ public class DistanceService {
     }
 
     public Distance getMaxDistance() {
-        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
+        List<Distance> distances = getDistances();
         distances.sort(sortByGreatest());
         return distances.get(0);
     }
 
     public Distance getMinDistance() {
-        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
+        List<Distance> distances = getDistances();
         distances.sort(sortByGreatest());
         return distances.get(distances.size() - 1);
     }
 
     public Distance getAverageDistance() {
-        List<Distance> distances = IterableExtensions.toList(distancesRepository.findAll());
+        List<Distance> distances = getDistances();
         double allDistancesSum = 0;
         for (Distance distance : distances)
         {
@@ -38,8 +40,12 @@ public class DistanceService {
         return Distance.Average(allDistancesSum / distances.size());
     }
 
+    private @NotNull ArrayList<Distance> getDistances() {
+        return new ArrayList<>(IterableExtensions.toList(distancesRepository.findAll()).stream().map(DistanceDTO::toModel).toList());
+    }
+
     public void save(Distance distance){
-        distancesRepository.save(distance);
+        distancesRepository.save(DistanceDTO.from(distance));
     }
 
     private static @NotNull Comparator<Distance> sortByGreatest() {

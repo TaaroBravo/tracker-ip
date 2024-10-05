@@ -1,7 +1,5 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
+package com.lautarobravo.tracipapi.domain.model;
 
-import com.lautarobravo.tracipapi.domain.model.CoordinatePosition;
-import com.lautarobravo.tracipapi.domain.model.Language;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
@@ -11,7 +9,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-public class GeoLocalizationData implements Serializable {
+public class GeoLocalization implements Serializable {
     @Id
     private String ip;
     private String countryName;
@@ -19,7 +17,7 @@ public class GeoLocalizationData implements Serializable {
     private List<Language> languages;
     private CoordinatePosition position;
 
-    public GeoLocalizationData(String ip, String countryName, String countryCode, List<Language> languages, CoordinatePosition position) {
+    public GeoLocalization(String ip, String countryName, String countryCode, List<Language> languages, CoordinatePosition position) {
         this.ip = ip;
         this.countryName = countryName;
         this.countryCode = countryCode;
@@ -27,8 +25,8 @@ public class GeoLocalizationData implements Serializable {
         this.position = position;
     }
 
-    public static GeoLocalizationData from(String ip,String countryName, String countryCode, List<Language> languages, CoordinatePosition position) {
-        return new GeoLocalizationData(ip, countryName, countryCode, languages, position);
+    public static GeoLocalization from(String ip, String countryName, String countryCode, List<Language> languages, CoordinatePosition position) {
+        return new GeoLocalization(ip, countryName, countryCode, languages, position);
     }
 
     public String getCountryName() {

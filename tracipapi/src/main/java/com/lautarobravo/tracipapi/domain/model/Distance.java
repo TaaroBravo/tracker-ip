@@ -37,7 +37,6 @@ public class Distance implements Serializable {
         return nf.format(value) + " Km.";
     }
 
-    //Lauta: I understand that the purpose of this exercise is testing mathematical knowledge, so this function was taken from Stackoverflow and validated by users.
     private static double distance(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -66,5 +65,9 @@ public class Distance implements Serializable {
 
     public double getValue() {
         return value;
+    }
+
+    public String getCountry() {
+        return country;
     }
 }

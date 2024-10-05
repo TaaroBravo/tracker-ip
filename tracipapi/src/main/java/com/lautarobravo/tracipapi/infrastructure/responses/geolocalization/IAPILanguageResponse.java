@@ -1,9 +1,9 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.geolocalization;
+package com.lautarobravo.tracipapi.infrastructure.responses.geolocalization;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lautarobravo.tracipapi.domain.model.Language;
 
-public class IAPILanguage {
+public class IAPILanguageResponse {
     public String code;
     @JsonProperty("native")
     public String mynative;

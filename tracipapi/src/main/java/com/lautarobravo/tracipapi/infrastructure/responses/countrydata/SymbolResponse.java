@@ -1,4 +1,4 @@
-package com.lautarobravo.tracipapi.infrastructure.dtos.countrydata;
+package com.lautarobravo.tracipapi.infrastructure.responses.countrydata;
 
 import com.lautarobravo.tracipapi.domain.model.Symbol;
 
