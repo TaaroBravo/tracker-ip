@@ -6,7 +6,7 @@ function App() {
 
   const handleClick = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/traceip?ip=${inputValue}`);
+      const response = await fetch(`http://localhost:8080/traceip?ip=${inputValue}`);
       const data = await response.text(); 
       setResponseText(data); 
     } catch (error) {
