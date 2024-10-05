@@ -1,7 +1,7 @@
 package com.lautarobravo.tracipapi.infrastructure.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.lautarobravo.tracipapi.domain.repositories.GeoLocalizationRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.GeoLocalizationRepository;
 import com.lautarobravo.tracipapi.domain.model.GeoLocalization;
 import com.lautarobravo.tracipapi.domain.services.GeoLocalizationService;
 import com.lautarobravo.tracipapi.infrastructure.dtos.GeoLocalizationDTO;
@@ -11,7 +11,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 @Component

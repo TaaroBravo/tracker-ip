@@ -1,7 +1,7 @@
 package com.lautarobravo.tracipapi.infrastructure.services;
 
 import com.lautarobravo.tracipapi.domain.model.Distance;
-import com.lautarobravo.tracipapi.domain.repositories.DistancesRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.DistancesRepository;
 import com.lautarobravo.tracipapi.domain.services.IterableExtensions;
 import com.lautarobravo.tracipapi.infrastructure.dtos.DistanceDTO;
 import org.jetbrains.annotations.NotNull;

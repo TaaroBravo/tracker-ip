@@ -1,6 +1,6 @@
 package com.lautarobravo.tracipapi;
 
-import com.lautarobravo.tracipapi.domain.repositories.CurrencyRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.CurrencyRepository;
 import com.lautarobravo.tracipapi.infrastructure.dtos.CurrencyDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

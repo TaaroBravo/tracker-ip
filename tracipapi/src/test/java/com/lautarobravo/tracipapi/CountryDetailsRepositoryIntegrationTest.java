@@ -1,6 +1,6 @@
 package com.lautarobravo.tracipapi;
 
-import com.lautarobravo.tracipapi.domain.repositories.CountryDetailsRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.CountryDetailsRepository;
 import com.lautarobravo.tracipapi.infrastructure.dtos.CountryDetailsDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

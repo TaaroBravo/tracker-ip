@@ -1,4 +1,4 @@
-package com.lautarobravo.tracipapi.domain.repositories;
+package com.lautarobravo.tracipapi.infrastructure.repositories;
 
 import com.lautarobravo.tracipapi.infrastructure.dtos.CountryDetailsDTO;
 import org.springframework.cache.annotation.Cacheable;

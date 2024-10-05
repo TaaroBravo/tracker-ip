@@ -3,7 +3,7 @@ package com.lautarobravo.tracipapi.infrastructure.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lautarobravo.tracipapi.domain.model.Currency;
 import com.lautarobravo.tracipapi.domain.model.Symbol;
-import com.lautarobravo.tracipapi.domain.repositories.CurrencyRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.CurrencyRepository;
 import com.lautarobravo.tracipapi.domain.services.CurrencyService;
 import com.lautarobravo.tracipapi.infrastructure.dtos.CurrencyDTO;
 import com.lautarobravo.tracipapi.infrastructure.responses.currency.FixerResponse;
@@ -13,7 +13,6 @@ import com.mashape.unirest.http.Unirest;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 @Component

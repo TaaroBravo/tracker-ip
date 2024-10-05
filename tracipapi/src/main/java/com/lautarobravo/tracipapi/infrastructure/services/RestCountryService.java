@@ -2,7 +2,7 @@ package com.lautarobravo.tracipapi.infrastructure.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lautarobravo.tracipapi.domain.model.CountryDetails;
-import com.lautarobravo.tracipapi.domain.repositories.CountryDetailsRepository;
+import com.lautarobravo.tracipapi.infrastructure.repositories.CountryDetailsRepository;
 import com.lautarobravo.tracipapi.domain.services.CountryService;
 import com.lautarobravo.tracipapi.infrastructure.dtos.CountryDetailsDTO;
 import com.lautarobravo.tracipapi.infrastructure.responses.countrydata.CountryLayerResponse;
@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

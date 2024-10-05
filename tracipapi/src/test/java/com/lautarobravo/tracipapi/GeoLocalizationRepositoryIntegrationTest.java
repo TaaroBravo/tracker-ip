@@ -1,8 +1,6 @@
 package com.lautarobravo.tracipapi;
 
-import com.lautarobravo.tracipapi.domain.repositories.DistancesRepository;
-import com.lautarobravo.tracipapi.domain.repositories.GeoLocalizationRepository;
-import com.lautarobravo.tracipapi.infrastructure.dtos.DistanceDTO;
+import com.lautarobravo.tracipapi.infrastructure.repositories.GeoLocalizationRepository;
 import com.lautarobravo.tracipapi.infrastructure.dtos.GeoLocalizationDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
