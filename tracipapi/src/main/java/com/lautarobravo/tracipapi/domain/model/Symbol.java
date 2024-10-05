@@ -41,4 +41,18 @@ public class Symbol implements Serializable {
     public String getSymbol() {
         return symbol;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Symbol c = (Symbol) obj;
+        return c.code.equals(code)
+                && c.symbol.equals(symbol)
+                && c.name.equals(name);
+    }
 }
