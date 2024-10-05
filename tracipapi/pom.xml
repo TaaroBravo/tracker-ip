@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.lautarobravo</groupId>
 	<artifactId>tracipapi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>tracipapi</name>
-	<description>Demo project for Spring Boot</description>
+	<version>0.0.2</version>
+	<name>TrackerIP</name>
+	<description>Information tracker by an IP</description>
 	<url/>
 	<licenses>
 		<license/>
