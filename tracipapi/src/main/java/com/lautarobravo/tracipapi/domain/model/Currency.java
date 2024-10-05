@@ -28,20 +28,12 @@ public class Currency implements Serializable {
         return symbol.toString() + " - ("+valueInUsd+" USD)";
     }
 
-    public boolean hasSameSymbol(Symbol symbol) {
-        return this.symbol.sameAs(symbol.getCode());
-    }
-
     public String getSymbolCode() {
         return symbol.getCode();
     }
 
     public Symbol getSymbol() {
         return symbol;
-    }
-
-    public boolean areTheSame(Currency currency) {
-        return currency.getSymbolCode().equals(getSymbolCode());
     }
 
     public String getSymbolName() {

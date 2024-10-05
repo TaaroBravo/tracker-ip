@@ -26,11 +26,4 @@ public class CountryDetails implements Serializable {
         return new CountryDetails(isoCode, currencies, timezones);
     }
 
-    public boolean hasSameCode(String code) {
-        return isoCode.equals(code);
-    }
-
-    public String getIsoCode() {
-        return isoCode;
-    }
 }
