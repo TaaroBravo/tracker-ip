@@ -34,18 +34,17 @@ public class GeoLocalizationDTO {
 
         Gson gson = new Gson();
 
+        var languages = new GeoLocalizationLanguagesDTO(geoLocalization.getLanguages());
         return new GeoLocalizationDTO(geoLocalization.getIp(),
                 geoLocalization.getCountryName(),
                 geoLocalization.getCountryCode(),
-                gson.toJson(geoLocalization.getLanguages()),
+                gson.toJson(languages),
                 gson.toJson(geoLocalization.getPosition()));
     }
 
     public GeoLocalization toModel(){
         Gson gson = new Gson();
-        Type languagesType = new TypeToken<ArrayList<Language>>(){}.getType();
-        Type positionsType= new TypeToken<CoordinatePosition>(){}.getType();
 
-        return new GeoLocalization(ip, countryName, countryCode, gson.fromJson(this.languages, languagesType), gson.fromJson(this.position, positionsType));
+        return new GeoLocalization(ip, countryName, countryCode, gson.fromJson(this.languages, GeoLocalizationLanguagesDTO.class).languages, gson.fromJson(this.position, CoordinatePosition.class));
     }
 }
